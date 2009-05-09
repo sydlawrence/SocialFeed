@@ -31,6 +31,13 @@ class YQL_Core {
 	protected $cache;
 
 	/**
+	 * The diagnostics returned from YQL
+	 *
+	 * @var   array
+	 */
+	protected $diagnostics;
+
+	/**
 	 * Where clauses
 	 *
 	 * @var   array
@@ -96,135 +103,44 @@ class YQL_Core {
 		return $this;
 	}
 
-	public function query($statment)
+	public function query($statement)
 	{
 		
 	}
 
-	protected function query()
+	public function __toString()
+	{
+		// Return just the YQL of this object
+		return $this->render_query(TRUE);
+	}
+
+	public function render_query($yql_only = FALSE)
 	{
 		
-	}
-} // End YQL_Core
-
-
-/**
- * YQL result object is passed back from all YQL queries
- *
- * @package  YQL
- * @author   Sam Clark
- */
-class YQL_Result implements Iterator, ArrayAccess, Countable
-{
-	/**
-	 * Data from the YQL result
-	 *
-	 * @var   array
-	 */
-	protected $results;
-
-	/**
-	 * The diagnostic information form the request
-	 *
-	 * @var   array
-	 */
-	protected $diagnostics;
-
-	/**
-	 * The current position of the iterator
-	 * Required by Iterator interface
-	 *
-	 * @var   int
-	 */
-	protected $current_row;
-
-	/**
-	 * The count of the results
-	 * Required by Countable interface
-	 *
-	 * @var   int
-	 */
-	protected $count;
-
-	/**
-	 * YQL Result constructor
-	 *
-	 * @param   Curl         data  the curl object used to query yql
-	 * @return  void
-	 * @author  Sam Clark
-	 * @access  public
-	 * @throws  Kohana_User_Exception
-	 **/
-	public function __construct(Curl $data)
-	{
-		if ( ! $data->executed)
-			throw new Kohana_User_Exception('YQL_Result::__construct()', 'The cURL object supplied has not executed!');
-
-		// Set the key to the current index
-		$this->key = 0;
-
-		// Parse the input data form the YQL query
-		$this->parse($data);
-
-		return;
 	}
 
 	/**
 	 * Detects the parse method from the response
 	 *
-	 * @param   Curl         data 
+	 * @param   string         data 
 	 * @return  array
 	 * @return  void
 	 * @author  Sam Clark
 	 * @access  protected
 	 */
-	protected function parse(Curl $data)
+	protected function parse($data)
 	{
-		if (preg_match('/application\/json/', $data->header('Content-Type')))
-			$this->parse_json($data);
-		elseif (preg_match('/text\/xml/', $data->header('Content-Type'))
-			$this->parse_xml($data);
+		if (preg_match('/text\/xml/', $this->curl->header('Content-Type'))
+			throw new Kohana_User_Exception('YQL_Result::parse()', 'XML is not currently supported!');
 
-		return NULL;
-	}
+		// Decode the result, and get the query array
+		$result = json_decode($data, TRUE);
+		$result = $result['query'];
 
-	protected function parse_json(Curl $data)
-	{
-		
-	}
+		// Put the result array into the results property, detecting whether this is CSS or not
+		$results = $this->detect_rss($result['results']) ? $result['results']['item'] : $this->results = $result['results'];
 
-	protected function parse_xml(Curl $data)
-	{
-		// Load the XML data in SimpleXMLElement
-		$xml = simplexml_load_string($data->result, 'SimpleXMLElement');
-
-		// Get all the results
-		$results = $xml->xpath('//results');
-		$diagnostics = $xml->xpath('//diagnostics');
-
-		// Create the result array
-		$data = array();
-
-		// Foreach result
-		foreach ($results as $result)
-		{
-			$data[$result->getName()] = $this->parse_xml_children($result);
-		}
-
-		// Set the count
-		$this->count = count($data);
-
-		return;
-	}
-
-	protected function parse_xml_children($result)
-	{
-		if ($result->children())
-		{
-			
-		}
-
-		return $result
+		return new YQL_Result_Iterator
 	}
 
 	/**
@@ -237,171 +153,9 @@ class YQL_Result implements Iterator, ArrayAccess, Countable
 	 * @access  protected
 	 * @throws  Kohana_User_Exception
 	 */
-	protected function detect_rss($result)
+ 	protected function detect_rss($result)
 	{
-		// If we're dealing with XML
-		if ($result instanceof SimpleXMLElement)
-		{
-			// Try accessing the items
-			try
-			{
-				// If no exception was thrown, this is most likely an RSS feed
-				$test_for_item = $result->item;
-				return TRUE;
-			}
-			catch (Exception $e)
-			{
-				// If an exception was thrown, this is not CSS
-				return FALSE;
-			}
-		}
-		// We're dealing with JSON
-		elseif (is_array($result))
-			return array_key_exists('item', $result);
-
-		// If none of the above, throw wobbly
-		throw new Kohana_User_Exception('YQL_Result::detect_rss()', 'The result set passed was not recognised');
+		return array_key_exists('item', $result);
 	}
 
-	/**
-	 * Return the count of the results
-	 * Required by Countable interface
-	 *
-	 * @return  int
-	 * @author  Sam Clark
-	 * @access  public
-	 */
-	public function count()
-	{
-		return $this->count;
-	}
-
-	/**
-	 * Returns the item at the current index
-	 * Required by the Iterator interface
-	 *
-	 * @return  mixed
-	 * @author  Sam Clark
-	 * @access  public
-	 */
-	public function current()
-	{
-		return $this->offsetGet($this->current_row);
-	}
-
-	/**
-	 * Returns the current key of the results
-	 * Required by the Iterator interface
-	 *
-	 * @return  int
-	 * @author  Sam Clark
-	 * @access  public
-	 */
-	public function key()
-	{
-		return $this->current_row;
-	}
-
-	/**
-	 * Moves the current row pointer on by one
-	 * Required by the Iterator interface
-	 *
-	 * @return  self
-	 * @author  Sam Clark
-	 * @access  public
-	 */
-	public function next()
-	{
-		++$this->current_row;
-		return $this;
-	}
-
-	/**
-	 * Rewinds the current row pointer to beginning
-	 * Required by the Iterator interface
-	 *
-	 * @return  self
-	 * @author  Sam Clark
-	 * @access  public
-	 */
-	public function rewind()
-	{
-		$this->current_row = 0;
-		return $this;
-	}
-
-	/**
-	 * Checks the current row pointer is valid
-	 * Required by the Iterator interface
-	 *
-	 * @return  bool
-	 * @author  Sam Clark
-	 * @access  public
-	 */
-	public function valid()
-	{
-		return $this->offsetExists($this->current_row);
-	}
-
-	/**
-	 * Tests that the requested offset exists
-	 * Required by the ArrayAccess interface
-	 *
-	 * @param   mixed       key  the key to test
-	 * @return  boolean
-	 * @author  Sam Clark
-	 * @access  public
-	 */
-	public function offsetExists($key)
-	{
-		return array_key_exists($key, $this->results);
-	}
-
-	/**
-	 * Returns requested offset by key
-	 * Required by the ArrayAccess interface
-	 *
-	 * @param   mixed        key
-	 * @return  mixed
-	 * @return  void
-	 * @author  Sam Clark
-	 */
-	public function offsetGet($key)
-	{
-		if ($this->offsetExists($key))
-			return $this->results[$key];
-
-		return NULL;
-	}
-
-	/**
-	 * Not available in this result set
-	 * Required by ArrayAccess interface
-	 *
-	 * @param   string       key 
-	 * @param   mixed        value 
-	 * @return  void
-	 * @author  Sam Clark
-	 * @access  public
-	 * @throws  Kohana_User_Exception
-	 */
-	public function offsetSet($key, $value)
-	{
-		throw new Kohana_User_Exception('YQL_Result::offsetSet()', 'You are trying to set a value to a result set!');
-	}
-
-	/**
-	 * Not available in this result set
-	 * Required by ArrayAccess interface
-	 *
-	 * @param   string       key 
-	 * @return  void
-	 * @author  Sam Clark
-	 * @access  public
-	 * @throws  Kohana_User_Exception
-	 */
-	public function offsetUnset($key)
-	{
-		throw new Kohana_User_Exception('YQL_Result::offsetUnset()', 'You are trying to set a value to a result set!');
-	}
-} // End YQL_Result
+} // End YQL_Core

@@ -9,6 +9,3 @@ $config['api'] = array
 
 // Cache lifetime in seconds, if FALSE no caching
 $config['cache'] = FALSE;
-
-// The response format you want from YQL (for now leave this as 'json', 'xml' will come soon)
-$config['format'] = 'json';
