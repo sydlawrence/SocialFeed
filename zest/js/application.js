@@ -69,7 +69,6 @@ function edit_image() {
 		return false;
 	}
 	url = BASE_URL+'admin/media/get_name/'+selected_image;
-	console.log(url);
 	
 	$("#edit_image").html('Please Wait');
 	$.get(url, function(data){
@@ -214,3 +213,49 @@ $(document).ready(function(){
 		$("#confirm").html(string);
 		hideMessages();
 	}
+
+
+function scan_site() {
+	url2 = $('#profile_url').val();
+	url = "/admin/profiles/scan";
+	
+	$('#profile_form').html("<p>Please wait. This could take fucking ages</p>");
+	
+	$.post(url, { url: url2 },
+	  function(data){
+	    
+	    profiles = data.profiles;
+	    feeds = data.feeds;
+	    console.log(data);
+		html = "<h2>I come bearing gifts</h2>";
+		html += "<h3>I have found the following profiles:</h3>";
+		html += "<ul>";
+		
+		for(i=0;i < profiles.length;i++) {
+			html += "<li id='profile_"+profiles[i].id+"'><span style='float:right'><a onclick='$('#profile_"+profiles[i].id+"').hide();return false;' class='ajax' href='/admin/profiles/activate/"+profiles[i].id+"'>activate</a></span><img src='"+profiles[i].favicon+"' />"+profiles[i].url+"</li>";
+		}
+		
+		html += "</ul>";
+		
+		html += "<h3>I have found the following feeds:</h3>";
+		html += "<ul>";
+		
+		for(i=0;i < feeds.length;i++) {
+			html += "<li id='feed_"+feeds[i].id+"'><span style='float:right'><a onclick='$('#feed_"+feeds[i].id+"').hide();return false;' class='ajax' href='/admin/feeds/activate/"+feeds[i].id+"'>activate</a></span><img src='"+feeds[i].favicon+"' /><a href='"+feeds[i].url+"' target='_BLANK'>"+feeds[i].title+"</a></li>";
+		}
+		
+		html += "</ul>";	    
+	    
+	    $('#profile_form').html(html);
+	    
+	    $('a.ajax').each(function() {
+	    	$(this).click(function() {
+	    		url = $(this).attr('href');
+	    		$.get(url);
+	    		return false;
+	    	})
+	    });
+	  }, "json");
+	return false;
+	
+}

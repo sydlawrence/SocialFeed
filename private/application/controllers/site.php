@@ -52,6 +52,11 @@ class Site_Controller extends Zest_Controller {
 	
 	public function _render_profiles() {
 		$html = "";
+		$profiles = ORM::factory('profile')->find_all();
+		foreach ($profiles as $profile) {
+			$html .= $profile->render();
+		}
+		
 		return $html;
 	}
 }

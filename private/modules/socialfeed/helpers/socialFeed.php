@@ -41,11 +41,7 @@ class socialFeed_Core {
 	 * @return string $url
 	 */
 	public static function get_favicon_from($url) {
-		if (self::url_exists('http://'.self::get_domain($url).'/favicon.ico'))
-			return 'http://'.self::get_domain($url).'/favicon.ico';
-	
-		$url = self::get_domain($url);
-		return "http://www.google.com/s2/favicons?domain=".urlencode($url);
+		return 'http://'.self::get_domain($url).'/favicon.ico';
 	}
 	
 	/**

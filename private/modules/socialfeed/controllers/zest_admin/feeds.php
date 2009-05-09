@@ -97,6 +97,12 @@ class Feeds_Controller extends Zest_admin_Controller {
 		$this->__set_content($view);
 	}
 	
+	public function activate($id) {
+		$item = ORM::factory('external_feed',$id);
+		$item->fl_active = 1;
+		$item->save();
+	}
+	
 	public function __external_feeds() {
 		if (isset($_GET['update'])) {
 			$feeds = ORM::factory('external_feed')->find_all();

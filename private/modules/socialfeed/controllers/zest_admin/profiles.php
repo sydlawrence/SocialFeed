@@ -27,21 +27,58 @@ class Profiles_Controller extends Zest_admin_Controller {
 		$this->__set_content($view);
 	}
 	
+	public function scan() {
+		$url = $_REQUEST['url'];
+		$scraper = new Site_scraper($url);
+		$results = $scraper->execute();
+		
+		$profiles = $results['profiles'];
+		$feeds = $results['feeds'];
+		
+		$p = array();
+		foreach ($profiles as $profile) {
+			$item = ORM::factory('profile');
+			$item->favicon = socialFeed::get_favicon_from($profile);
+			$item->url = $profile;
+			$item->save();
+			$p[] = $item->as_array();
+		}
+		
+		$f = array();
+		foreach ($feeds as $title => $feed) {
+			$item = ORM::factory('external_feed');
+			$item->favicon = socialFeed::get_favicon_from($feed['profile']);
+			$item->url = $feed['feed'];
+			$item->save();
+			$f[] = $item->as_array();
+		}
+		
+		$array = array("profiles"=>$p,"feeds"=>$f);				
+		echo json_encode($array);
+		exit;
+	
+	}
+	
+	public function activate($id) {
+		$item = ORM::factory('profile',$id);
+		$item->fl_active = 1;
+		$item->save();
+	}
+	
 	public function _list() {
 		$items = ORM::factory('profile')->orderby(array('fl_active'=>'DESC','title'=>'ASC'))->find_all();
 		
 		$html = "<ul>";
 		
 		foreach ($items as $item) {
-			$html .= "<li><span style='float:right'>".$item->fl_active."</span>".$item->get_favicon()." ".$item->title."</li>";
+			$html .= "<li><span style='float:right'>".$item->fl_active."</span><img src='".$item->get_favicon()."' /> ".$item->title."</li>";
 		}
 		$html .= "</ul>";
 		return $html;
 	}
 	
 	public function _form() {
-		$html = "";
-		
+		$html = new View('zest/profile_form');;
 		
 		return $html;
 	}
