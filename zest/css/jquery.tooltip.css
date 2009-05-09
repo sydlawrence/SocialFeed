@@ -1,0 +1,12 @@
+#tooltip {
+	position: absolute;
+	z-index: 3000;
+	width:220px;
+	height:124px;
+	background: url('../img/tooltip.png');
+	color:#00a8f1;
+	padding:15px;
+	padding-bottom:28px;
+	font-size:12px;
+}
+#tooltip h3, #tooltip div { margin: 0; }

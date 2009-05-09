@@ -1,0 +1,13 @@
+input.error {
+	background: url(../img/cross.png) no-repeat right center;
+	color:#000 !important;
+}
+
+input.valid {
+	background: url(../img/tick.png) no-repeat right center;
+}
+
+label.error {
+	display:block;
+	font-size:0.9em;
+}

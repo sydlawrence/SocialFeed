@@ -1,0 +1,12 @@
+<div class="hproduct">
+	<h2 class="name fn"><a href="{LINK}" title="{TITLE}" class="url" rel="bookmark">{TITLE}</a></h2>
+	<div class="image">{IMAGE}</div>
+	<span class="price sale">
+		<span class="money">
+			<strong>Price: </strong>
+			<abbr class="currency" title="GBP" lang="en">&pound;</abbr>
+			<span class="amount">{PRICE}</span>
+		</span>
+	</span>
+	<a href="{LINK}" title="{TITLE}" class="button url" rel="bookmark">read more</a>
+</div>

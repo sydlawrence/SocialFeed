@@ -1,0 +1,16 @@
+<div class="comment hentry">
+	{AVATAR}
+	<p><span class="entry-title">
+      <cite class="author vcard">
+        {AUTHOR}
+      </cite> said
+    </span> 
+    <span class="comment-date">about: 
+        <abbr class="updated" title="{DATE}">{DATE}</abbr>
+    </span></p>
+	<div class="entry-content">
+      <q>{TEXT}</q>
+  	</div>
+  	{DELETE_LINK}
+  	<div class="spacer">&nbsp;</div>
+</div>

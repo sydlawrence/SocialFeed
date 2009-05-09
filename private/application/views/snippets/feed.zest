@@ -1,0 +1,4 @@
+<div class="hfeed">
+	{FEEDPOSTS}
+	{PAGINATION}
+</div>

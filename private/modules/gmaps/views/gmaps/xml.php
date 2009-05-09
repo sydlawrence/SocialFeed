@@ -1,0 +1,1 @@
+<p><?php echo $location->title;?>, <br /><?php echo $location->description;?></p>

@@ -1,0 +1,206 @@
+/*	green color: #00f07d*/
+
+body {
+	background-color:#1a120f;
+	border-color: #FFF;
+}
+
+a {
+	color:#00f07d;
+}
+
+hr {
+	background-image:url(../images/hr.jpg);
+}
+
+.color {
+	color: #00f07d !important;
+}
+
+#message #error, .error {
+	color:#e12727 !important;
+}
+
+#message #warning {
+	color:#e1b727;
+}
+
+#message #confirm {
+	color:#3de127;
+}
+
+#head {
+	background-image:url(../images/mainbg.jpg);
+	background-repeat:repeat-x;
+}
+
+#head #topLinks {
+	color:#857d7a;
+}
+
+#head #topLinks a {
+	color:#857d7a;
+}
+
+#head #topLinks a:hover {
+	color:#fff;
+}
+
+#head #topLinks a.active {
+	color:#00f07d;
+}
+
+#head h1 {
+	color:#00f07d;
+}
+
+#head h2 {
+	color:#fff;
+}
+
+#head h3 {
+	color:#857d7a;
+}
+
+img.square_thumb {
+	border-color:#ddd;
+}
+
+#topNav li a {
+	background-repeat:no-repeat;
+	color:#7e7e7e;
+	background-color:#fff;
+}
+
+#topNav li a:hover {
+	color:#00f07d;
+}
+
+#topNav li a.active {
+	background-image:url(../images/tab_active.gif);
+	color:#fff;
+	background-position: right top;
+	background-color: transparent;
+}
+
+ul.nav.subnav li a {
+	background-color:transparent;
+	color:#000;
+}
+
+ul.nav.subnav li a:hover {
+	color:#00f07d;
+}
+
+ul.nav.subnav li.ui-tabs-selected a {
+	background-color:#fff;	
+	background-image:url(../images/subtab.jpg);
+	
+}
+
+.content li.ui-tabs-selected a.active {
+	border: 2px solid #00f07d;	
+	background-image:url(../images/subtab.jpg);
+	
+}
+
+.content ul.nav.subnav li.ui-tabs-selected a {
+	color:#00f07d;
+	background:none;
+}
+
+#logo {
+	background-image:url(../images/logobg.gif);
+	background-repeat:no-repeat;
+}
+
+table a {
+	color:#000;
+}
+
+table tr:hover {
+	background-color:#ddd;
+	color:#00f07d;
+}
+
+table tr:hover a {
+	color:#00f07d;
+}
+
+table th {
+	color:#000;
+	background:#fff;
+	border-color:#ddd;
+}
+
+table td {
+	border-color:#ddd;
+}
+
+#head #title {
+	background-color:#00f07d;
+	background-image:url(../images/blueBar.jpg);
+	background-repeat:repeat-y;
+	color:#fff;
+}
+
+#head #title #userDetails a {
+	color:#fff;
+}
+
+#head #title #userDetails a:hover {
+	color:#000;
+}
+
+#main {
+	background-color:#fff;
+}
+
+#main .wrapper {
+	background-color:#dededd;
+}
+
+.content {
+	background-color:#fff;
+	
+}
+
+#right {
+	border-color:#aaa;
+}
+
+#footer {
+	color:#fff;
+}
+
+.content h1 {
+	color:#000;
+}
+
+.content h2 {
+	color:#000;
+}
+
+.content h3 {
+	color:#000;
+}
+
+.content p {
+	color:#000;
+}
+
+#extras {
+	background:#ddd;
+}
+
+#extras label {
+	color:#000;
+}
+
+#extras a {
+	color:#000;
+}
+
+#extras a:hover {
+	color:#00f07d;
+}

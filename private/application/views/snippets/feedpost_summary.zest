@@ -1,0 +1,12 @@
+<div class="hentry entry">
+	<h2 class="entry-title fn"><a href="{LINK}" title="{TITLE}" class="url" rel="bookmark">{TITLE}</a></h2>
+	<div class="post-info">
+		<h3><abbr class="published" title="{DATE}">{DATE}</abbr></h3>
+		<h4>{COMMENT_COUNT}</h4>
+	</div>
+	{IMAGE}
+	<div class="entry-content">
+		<p>{TEXT}</p>
+	</div>
+	<a href="{LINK}" title="{TITLE}" class="button url" rel="bookmark">read more</a>
+</div>

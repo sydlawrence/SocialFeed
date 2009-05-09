@@ -1,0 +1,7 @@
+{CRUMBS}
+<div class="hproduct-category">
+	<h2 class="category fn title"><a href="{LINK}" title="{TITLE}" class="url" rel="bookmark">{TITLE}</a></h2>
+	<div class="description">{DESCRIPTION}</div>
+	<div class="image">{IMAGE}</div>
+	<a href="{LINK}" title="{TITLE}" class="button url" rel="bookmark">read more</a>
+</div>

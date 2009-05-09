@@ -1,0 +1,51 @@
+* {
+	padding:0px;
+	margin:0px;
+}
+
+hr {
+	border-style:none;
+	padding:0px;
+	height:1px;
+}
+
+.right {
+	position:relative;
+	float:right;
+}
+
+.left {
+	position:relative;
+	float:left;
+}
+
+.nav {
+	list-style:none;
+}
+
+.spacer {
+	clear:both;
+	float:none;
+}
+
+.clear {
+	clear:both;
+	float:none;
+}
+
+a {
+	text-decoration:none;
+}
+
+img {
+	border:none;
+}
+
+.border {
+	border:2px solid #dededd;
+}
+
+.padding {
+	padding:10px;
+}
+

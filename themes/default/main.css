@@ -1,0 +1,1219 @@
+	/* Sweetcron Boxy CSS - 08/09/2008
+
+	Table of Contents:
+	Reset
+	Typography
+        Navigation
+        Item header
+        Blog Items
+	Positioning
+	Per-Domain Styling
+        Item Labels
+	IE Fixes
+	3rd Party
+			
+*/
+
+/* Reset
+---------------------------------------------------------------------------------------- */
+
+* {
+	margin: 0;
+	padding: 0;
+	outline: none;
+}
+
+/* now I'm working with a clean slate! */
+
+
+/* Typography
+---------------------------------------------------------------------------------------- */
+
+body {
+	font-family: "Lucida Grande", Arial, Helvetica, sans serif;
+	font-size: 12px;
+	color: #000;
+	line-height: 1.7em;
+        background: #D6D6D6;
+}	
+
+
+h1 {
+    font-size: 38px;  
+    color: #f1f1f1;
+}
+
+a {
+	color: #3399ff;
+text-decoration: none;
+}
+
+a:hover {
+	color: #003399;
+}
+
+
+
+p.original_link a, p.activity_image_text span, div#aboutme, p.blog_cite, div#single_header p,  p.osf_recipe {
+	color: #666666;	
+}
+
+/*  Navigation */
+
+ul#navigation {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+}   
+
+ul#navigation li {
+    float: left;
+    margin-right: 0px;   
+}
+
+ul#navigation li a {
+	float: left;
+	padding: 5px 10px 4px;
+	margin: 0 0 ;
+        border: 1px solid #CCC; 
+        border-bottom: none;
+        background: #f1f1f1;
+-moz-border-radius-topleft: 6px;
+-webkit-border-top-left-radius: 6px;
+-moz-border-radius-topright: 6px; 
+-webkit-border-top-right-radius: 6px;
+        height: 20px;
+
+}
+
+
+ul#navigation li.current a {
+	background: #D6D6D6;
+
+}
+
+ul#navigation li.current a, ul#navigation li a:hover {
+	color: black;	
+}
+
+/* item header */
+
+p.vimeo_title a, li.item.digg_com div.item_inner a, li.item.stumbleupon_com div.item_inner a, ul#activity_list li.item.youtube_com div.item_inner a, ul#activity_list li.item.youtube_com div.item_inner, li.item.delicious_com div.item_inner a,  p.osf_recipe a, div#header h1 a {
+	color: white;	
+
+}
+
+ul#activity_list li.item.youtube_com div.item_inner {
+	color: #white;	
+}
+	
+	
+input.text_input {
+	font-size: 13px;	
+}
+
+
+div#single_content ul {
+list-style-position: inside;
+            list-style-type: disc;
+            padding-bottom: 10px;
+}
+
+div#single_content ol {
+list-style-type: decimal
+ padding-bottom: 10px;
+list-style-position: inside;
+}
+
+p#pagination, div#single_container h3, div#single_container h4, div#single_container h5 {
+	font-size: 20px;
+}	
+
+div#single_container h2 {
+	font-size: 22px;	
+}
+
+ul#activity_list li.item p.date {
+	font-size: 9px;	
+}
+
+p.blog_cite, .item_head, p.date, p.original_link, p.activity_image_text, div#aboutme, div#footer, ul#activity_list li.item.youtube_com div.item_inner, p.osf_recipe span {
+    font-size: 10px;   
+}
+
+
+p.activity_image_text a, p.twitter_tweet, p.last_song, ul#activity_list li.item.sydlawrence_com div.item_inner, p.vimeo_title, li.item.digg_com div.item_inner a, li.item.stumbleupon_com div.item_inner a, li.item.delicious_com div.item_inner a, li.item.google_com div.item_inner a, li.item.sydlawrence_com div.item_inner a, div#explanation strong, p#pagination, ul#activity_list li.item.youtube_com div.item_inner a, div#single_header, div#single_container strong, ul.item_tag_list, ul#navigation li, p.osf_recipe, div.instructions strong {
+	font-weight: bold;	
+}
+
+
+
+p.blog_title a, p.original_link a, p.activity_image_text a, .item_head a, p.vimeo_title a, li.item.digg_com div.item_inner a, li.item.stumbleupon_com div.item_inner a, li.item.delicious_com div.item_inner a, li.item.google_com div.item_inner a, li.item.sydlawrence_com div.item_inner a, ul#activity_list li.item.youtube_com div.item_inner a, ul#navigation li a, p.osf_recipe a, div#header h1 a {
+    text-decoration: none;   	
+}
+
+p.blog_title a:hover, p.original_link a:hover, p.activity_image_text a:hover, li.item.delicious_com div.item_inner a:hover, li.item.google_com div.item_inner a:hover, li.item.digg_com div.item_inner a:hover, li.item.digg_com div.item_inner a:hover {
+	text-decoration: underline;	
+}
+
+p.blog_title {
+font-size: 1.2em;
+}
+
+p.vimeo_title, ul#activity_list li.item.youtube_com div.item_inner, ul#activity_list li.item.sydlawrence_com div.item_inner {
+	text-align: center;	
+}
+
+div#single_header h2 {
+	line-height: 1.1em;	
+}
+
+p.activity_image_text {
+	line-height: 1.5em;
+	margin: 0 0 0 2px
+		
+}
+
+p.twitter_tweet, p.last_song, div#aboutme, ul#activity_list li.item.youtube_com div.item_inner {
+	line-height: 1.6em;	
+}
+
+ul#activity_list li.item p.date {
+align: right;
+color: #666666;
+background: #f1f1f1;
+border: 1px solid #CCC;
+border-bottom: none;
+border-top: none;
+ padding: 0px 10px 0px 22px;
+}
+
+
+/* Blog items */
+
+	#main_container #blog-items {
+		background: #f1f1f1; 
+                border: 1px solid #CCC;
+		margin: 10px 0 0px;
+		padding: 2px 8px 8px 8px;
+		width: 643px;
+                -moz-border-radius: 6px;
+                -webkit-border-radius: 6px;
+                 background-image: url(images/blog_items_bg.png); 
+background-position:bottom right; 
+background-repeat:no-repeat;
+
+		}
+
+
+		#main_container #blog-items #latest {
+			float: left;
+			width: 450px;
+                        
+			}
+
+#latest div {
+ display: none;
+
+} 
+
+
+#main_container #lifestream h3 {
+padding: 10px 0 10px 0;
+}
+			#main_container #blog-items #latest h2 {
+			
+			        margin: 00 0 2px 10px;
+				color: #000;
+				font-size: 1.6em;
+				font-weight: bold;
+				padding-left: 10px;
+				margin-bottom: 0px;
+				}
+			
+			#main_container #blog-items #latest small {
+				color: #626262;
+				display: block;
+				font-size: 0.7em;
+				margin-bottom: 5px;
+				}
+			
+			#main_container #blog-items #latest p {
+				color: #666666;
+				font-size: 1em;
+				line-height: 1.2em;
+                                font-weight: normal;
+				}
+
+				#main_container #blog-items #latest .readmore {
+					margin-top: 10px;
+					}
+
+				#main_container #blog-items #latest .readmore a {
+					background: #0066cb;
+					color: #fff;
+					font-size: 0.8em;
+					padding: 3px 5px;
+					}
+
+                                #main_container #blog-items #latest a:hover {
+                        	color: #003399;
+                                 } 
+				
+
+		#main_container #blog-items #recent {
+			float: right;
+			width: 180px;
+			}
+
+			#main_container #blog-items #recent h2 {
+				background: 
+				color: #000;
+				font-size: 1.06em;
+				font-weight: bold;
+			        
+				
+				}
+				
+				#main_container #blog-items #recent h2 a {
+					color: #000;
+   margin-top: 5px;
+					}
+			
+			#main_container #blog-items #recent li {
+				font-size: 1em;
+			        line-height: 1em
+                                margin: 0 0 0 0;
+				}
+				
+				#main_container #blog-items #recent li h3 {
+					font-weight: normal;
+                                        color: #000;
+                                        line-height: 1em;
+					}
+
+					#main_container #blog-items #recent li h3 a {
+						display: block;
+						padding: 2px 2px 0 2px;
+                                                color: #3399FF;
+                                               
+						}
+
+					#main_container #blog-items #recent li h3 .selected {
+						background: #ffffff 
+						border: 1px solid #CCC;
+                                                -moz-border-radius: 6px;
+                                                -webkit-border-radius: 6px;
+
+						}
+				
+				#main_container #blog-items #recent li small {
+					color: #626262;
+					font-size: 0.7em;
+                                        line-height: 0.7em;
+
+					}
+				
+				#main_container #blog-items #recent li .readmore {
+					font-size: 0.7em;
+					font-weight: bold;
+					}
+
+
+
+
+/* Positioning
+---------------------------------------------------------------------------------------- */
+
+body {
+    background: #D6D6D6;   
+}
+
+div.center_box {
+    width: 983px;
+    margin: 0 auto;   
+    position: relative;
+      
+}
+
+div#header {
+	background: #3F4C6B;
+}
+
+div#header div.center_box {
+	height: 170px;	
+}
+
+div#header h1 {
+	position: absolute;
+	top: 50px;
+	left: 0;
+        padding: 5px;
+}
+
+div#header h1 a {
+	border: 1px solid #b8dbfe;
+	border-style: none none none none;	
+}
+
+div#header h1 a:hover {
+	border: 1px solid white;
+	border-style: none none none none;		
+}
+
+img#itsame {
+        height: 164px;
+	display: block;
+	position: absolute;
+	right: 80px;
+	bottom: 0;
+
+}
+
+
+
+
+div#main_container {
+float: left;
+    margin: 10px 0 0 0;    
+width: 668px; 
+   
+}
+
+div#main_container_single {
+
+}
+
+div#sidebar_container {
+    display: inline;
+    width: 300px;
+    float: left;
+    margin:10px 0 0 15px;
+
+}
+    
+.item_head {
+    padding: 0px 0px 0px 20px; 
+    border: 1px solid #CCC;
+    border-bottom: none;
+-moz-border-radius-topleft: 6px;
+-webkit-border-top-left-radius: 6px;
+-moz-border-radius-topright: 6px; 
+-webkit-border-top-right-radius: 6px;
+
+}
+
+.item_head {
+font-size: 0.8em;
+}
+
+.item_head a {
+#3399ff;
+font-size: 1em;
+font-weight: bold;
+}
+
+
+ul#activity_list {
+	float: left;
+	margin: 15px 0 0 0;	
+}
+
+ul#activity_list li.item {
+    width: 215px;
+    margin: 0 8px 20px 0px;
+    float: left;
+    overflow: hidden;
+}
+
+div.item_inner {
+border: 1px solid #CCC;
+border-top: none;
+margin: 0 0 0px 0;	
+overflow: hidden;
+position: relative;
+-moz-border-radius-bottomleft: 6px;
+-webkit-border-bottom-left-radius: 6px;
+-moz-border-radius-bottomright: 6px; 
+-webkit-border-bottom-right-radius: 6px;
+background-color: #f1f1f1;            
+font-weight:normal;
+height:220px;
+position:relative;
+}
+
+
+ul#activity_list li.item.last {
+	margin-right: 0;	
+}
+
+li.item img, div#single_container img {
+    display: block;
+}
+
+ul.item_tag_list li {
+    display: inline;   
+}
+
+div.clear {
+	clear: both;	
+}
+
+p#breadcrumb {
+  background: #f1f1f1;
+                border: 1px solid #CCC;
+		height: 40px;
+		margin: 10px 0 10px 0;
+		padding: 20px 0px 2px 20px; 
+                font-size: 1.4em;
+                -moz-border-radius: 6px;
+                -webkit-border-radius: 6px;  margin-bottom: 0px;
+}
+
+p#pagination {
+
+}
+
+
+p#pagination {
+	padding: 10px 0;	
+}
+
+div#sidebar_container h3 {
+    border: 1px solid #CCC;
+    border-style: none none solid none;
+    margin: 10px 0 5px 0;   
+}
+
+div#sidebar_container div#aboutme_blurb h3 {
+	margin-top: 0;	
+	border: none;
+}
+
+ul.tag_list li {
+    display: inline;
+    margin: 0 5px 0 0;   
+}
+div#comments_container {
+    border: 1px solid #EEE;
+    border-style: solid none none none;
+    padding: 10px 0;
+    margin-top: 20px;   
+}
+
+div.ad_container img {
+	display: block;	
+}
+
+div.ad_container.bottom { 
+	margin: 15px 0;
+}
+
+form#search_form {
+	margin: 3px 0 0 0;	
+	background: #f1f1f1;
+        border: 1px solid #CCC;
+        padding: 5px 0 4px 4px;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+}
+
+form#mailing_list {
+    margin-top: 15px;
+    background: white url(images/mailinglist.gif) 0 0 no-repeat;
+    border: 1px solid #CCC;
+}
+
+form#mailing_list p {
+    padding: 70px 10px 10px 10px;   
+}
+
+input.text_input {
+    background: #FFFFCC;
+    width: 180px;   
+}
+
+
+div#aboutme_blurb {
+    width: 180px;
+    border: 1px solid #EEE;
+    border-style: none solid none none;
+    padding: 0 15px 0 0;
+    float: left;
+    margin-right: 15px;
+}
+
+div#aboutme ul {
+    list-style-type: disc;
+}
+
+div#aboutme ul li {
+    padding-bottom: 5px;
+}
+
+div#aboutme h3, div#aboutme ul, div#aboutme p {
+    margin-left: 20px;
+}
+
+div#aboutme h3 {
+    margin-bottom: 5px;
+}
+
+p.sidebar_small_banner img {
+    display: block;
+    margin-bottom: 10px;
+}
+
+div#footer {
+    clear: both;
+}
+
+div#footer {
+    background: #EEE;
+    padding: 8px;
+    position: relative;
+}
+
+a#credits {
+    position: absolute;
+    right: 10px;
+    top: 6px;
+}
+
+div#single_header {
+	padding: 10px 0 15px 0;	
+}
+
+div#single_content p, div#single_container object, div#single_container img, div#single_container ul, div#single_container ol {
+	margin-bottom: 15px;	
+}
+
+div#single_container img {
+	border: 1px solid #F1F1F1;
+	padding: 5px;	
+}
+
+div#single_container h3, div#single_container h4, div#single_container h5 {
+	border: 1px solid #CCC;
+	border-style: none none none none;	
+	padding-bottom: 8px;
+	margin-bottom: 8px;
+	margin-top: 25px;
+}
+
+p#original_permalink span {
+	background: #FFFFCC;	
+}
+
+div.activity_list_inner img {
+	float: left;
+	margin-right: 10px;	
+}
+
+li.activity_item {
+	clear: both;	
+}
+
+/* Per-Domain Styling
+---------------------------------------------------------------------------------------- */
+
+li.item.flickr_com .item_head {
+	background: blue;	
+}
+
+ul#activity_list li.item.flickr_com div.item_inner {
+	background: transparent	
+}
+
+
+li.item.vimeo_com div.item_inner {
+	background: #80ceff url(images/vimeoback.jpg) bottom center no-repeat;
+}
+
+li.item.vimeo_com div.item_inner object {
+	border: 1px solid white;
+	border-style: none none solid none;	
+}
+
+p.vimeo_title a {
+	border: 1px solid #a7dafa;
+	border-style: none none solid none;	
+}
+
+p.vimeo_title a:hover {
+	border: 1px solid white;
+	border-style: none none solid none;
+}
+
+ul#activity_list li.item.twitter_com div.item_inner {
+	background: url(images/twitterback.jpg);	
+}
+
+p.twitter_user {
+	margin: 10px 0 0 10px;	
+	padding-bottom: 10px;
+
+}
+
+p.twitter_user img {
+	display: block;
+	border: 1px solid #999;
+}
+
+p.twitter_tweet {
+	background: white;
+	padding: 8px 12px;
+	overflow: hidden;	
+	background: white url(images/twitterdither.gif) bottom left repeat-x;
+	border: 1px solid #DDD;
+	border-style: none none solid none;
+	margin: 0 10px;
+}
+
+p.last_love {
+        background: #transparent;
+	margin: 10px 0 0 10px;	
+	padding-bottom: 10px;
+        color: white;
+}
+
+p.last_love a {
+        color: white;
+font-size: 1.4em;
+
+}
+
+p.last_love a .hover {
+color: #ccc ;
+
+}
+
+p.last_love img {
+	display: block;
+	border: 0px ;
+}
+
+ul#activity_list li.item.last_fm div.item_inner {
+	background: #D01F3C url(images/lastbg.png) bottom right no-repeat;	
+}
+
+li.item.last_fm div.item_inner a {
+	border: 1px solid #6688d4;
+	border-style: none none none none;
+	display: block;	
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+}
+
+ul#activity_list li.item.last_fm_com div.item_inner {
+	background: #D01F3C ;
+}
+
+div#lfmplayer {
+	position: absolute;
+	bottom: 50px;
+	left: 20;
+}
+
+li.item.digg_com div.item_inner {
+	color: #f1f1f1;
+}
+
+ul#activity_list li.item.digg_com div.item_inner {
+	background: #356AA0 url(images/diggback.png) bottom right no-repeat;	
+}
+
+li.item.digg_com div.item_inner a {
+	border: 1px solid #6688d4;
+	border-style: none none none none;
+	display: block;	
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+}
+
+li.item.stumbleupon_com div.item_inner {
+	color: #4f74ab;
+}
+
+ul#activity_list li.item.stumbleupon_com div.item_inner {
+	background: #4f74ab url(images/stumbleuponback.gif) bottom right no-repeat;	
+}
+
+li.item.stumbleupon_com div.item_inner a {
+	border: 1px solid #6688d4;
+	border-style: none none none none;
+	display: block;	
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+}
+
+
+li.item.delicious_com div.item_inner {
+	color: #dadada;
+}	
+
+ul#activity_list li.item.colourlovers_com div.item_inner {
+	background: #484848 url(images/colourloversbg.png) bottom right no-repeat;
+}
+
+ul#activity_list li.item.colourlovers_com div.item_inner a {
+	color:#888888;
+}
+
+ul#activity_list li.item.colourlovers_com div.item_inner a:hover {
+	color:#ccc;
+}
+
+ul#activity_list li.item.colourlovers_com div.item_inner img {
+	margin-top:20px;
+	background: #fff;
+	padding:10px;
+}
+
+ul#activity_list li.item.delicious_com div.item_inner {
+	background: #5d88d6 url(images/delbg.png) bottom right no-repeat;	
+}
+
+li.item.delicious_com div.item_inner a {
+	border: 1px solid #5d88d6;
+	border-style: none none none none;
+	display: block;	
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+}
+
+li.item.google_com div.item_inner, li.item.google_com div.item_inner a {
+color: #2237ca
+}
+
+ul#activity_list li.item.google_com div.item_inner {
+	background: #c3d9ff url(images/googleback.png) bottom right no-repeat;	
+}
+
+li.item.google_com div.item_inner a {
+	border: 1px solid #2238ce;
+	border-style: none none none none;
+	display: block;	
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+}
+
+ul#activity_list li.item.sydlawrence_com div.item_inner p.blog_cite {
+	font-weight: normal;	
+}
+
+ul#activity_list li.item.sydlawrence_com div.item_inner {
+	background: #F1F1F1 url(images/blogback.png) bottom right no-repeat;	
+}
+
+li.item.sydlawrence_com div.item_inner {
+	color: #666666;
+        font-size: 12px;
+}
+
+li.item.sydlawrence_com div.item_inner a {
+	border: 1px solid #7094b8;
+	border-style: none none none none;
+	display: block;	
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+}
+
+ul#activity_list li.item.sydlawrence_com div.item_inner p {
+	color: #666666;
+}
+
+ul#activity_list li.item.sydlawrence_com div.item_inner img {
+	display: inline;	
+}
+
+li.item.sydlawrence_com div.item_inner a:hover {
+	color: #003399;
+} 
+
+ ul#activity_list li.item.sydlawrence_com div.item_inner {
+font-size: 12px;
+}
+
+
+ul#activity_list li.item.blip_fm div.item_inner {
+	background: #DDEBFF ; url(images/blip_fm_bg.png) bottom right no-repeat;
+	}
+
+div.inner_container_blip {
+	padding: 2px 2px 0px;
+}	
+
+ul#activity_list li.item.youtube_com div.item_inner {
+	background: #d02525 url(images/youtubeback.png) bottom left repeat-x;
+}
+
+ul#activity_list li.item.youtube_com div.item_inner object {
+	border: none;
+	border-style: none none none none;	
+	margin-bottom: 7px;
+}
+
+ul#activity_list li.item.youtube_com div.item_inner p {
+	padding: 0 0px;	
+}
+
+ul#activity_list li.item.youtube_com div.item_inner a {
+	border: 1px solid #f07777;
+	border-style: none none solid none;	
+}
+
+ul#activity_list li.item.youtube_com div.item_inner a:hover {
+	border: 1px solid white;
+	border-style: none none solid none;	
+}
+
+div.speech_tail {
+    height: 10px;
+    background: transparent url(images/speech_tail.gif) 13px 0 no-repeat;
+}
+
+
+
+
+li.item.opensourcefood_com img {
+	position: absolute;	
+	bottom: 0;
+	right: 0;
+	z-index: 0;
+}
+
+div.osf_fold a {
+    height: 250px;
+    width: 211px;
+	background: transparent url(images/osfback.png) bottom right no-repeat;
+	z-index: 1000;
+	position: absolute;	
+}
+
+p.osf_recipe {
+	position: absolute;
+	z-index: 1001;
+	top: 10px;
+	left: 10px;	
+	width: 190px;
+}
+
+p.osf_recipe a {
+	border: 1px solid #333;
+	border-style: none none solid none;
+}
+
+p.osf_recipe a:hover {
+	border: 1px solid white;
+	border-style: none none solid none;
+}
+
+p.osf_recipe span {
+	margin-top: 3px;
+	display: block;	
+	width: 180px;
+}
+
+a.activity_image {
+	display: block;
+	height: 220px;	
+                border: 1px solid #CCC;
+                -moz-border-radius: 6px;
+                -webkit-border-radius: 6px;
+              
+}
+
+p.activity_image_text {
+	position: absolute;
+	top: 0;	
+	padding: 3px 5px;
+	background: black;	
+}
+
+div.instructions code {
+	background: #FFFFCC;	
+}
+
+
+
+/* Item labels */
+
+
+span.type_label.blog {
+    background: transparent url(images/blog_label.gif) 0 0;
+   
+    -moz-border-radius-bottomright: 6px;
+    -webkit-border-bottom-right-radius: 6px;
+}
+
+span.type_label.photo {
+    background: transparent url(images/photo_label.gif) 0 0;
+    -moz-border-radius-bottomright: 6px;
+    -webkit-border-bottom-right-radius: 6px;
+}
+
+span.type_label.image {
+    background: transparent url(images/image_label.gif) 0 0;
+    -moz-border-radius-bottomright: 6px;
+    -webkit-border-bottom-right-radius: 6px;
+}
+
+span.type_label.video {
+    background: transparent url(images/video_label.gif) 0 0;
+    -moz-border-radius-bottomright: 6px;
+    -webkit-border-bottom-right-radius: 6px;
+}
+
+span.type_label.audio {
+    background: transparent url(images/audio_label.gif) 0 0;
+    -moz-border-radius-bottomright: 6px;
+    -webkit-border-bottom-right-radius: 6px;
+}
+
+span.type_label.regular {
+    background: transparent url(images/regular_label.gif) 0 0;
+    -moz-border-radius-bottomright: 6px;
+    -webkit-border-bottom-right-radius: 6px;
+}
+
+span.type_label.quote {
+    background: transparent url(images/quote_label.gif) 0 0;
+    -moz-border-radius-bottomright: 6px;
+    -webkit-border-bottom-right-radius: 6px;
+}
+
+span.type_label.link {
+    background: transparent url(images/link_label.gif) 0 0;
+    -moz-border-radius-bottomright: 6px;
+    -webkit-border-bottom-right-radius: 6px;
+}
+
+div.inner_container {
+	padding: 8px 10px 10px;
+}	
+
+p.blog_title, p.blog_cite {
+	margin: 0px 0 10px 0;
+
+}
+span.type_label {
+    display: block;
+    height: 48px;
+    width: 48px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+}
+
+
+
+
+/* IE Fixes (lulz)
+---------------------------------------------------------------------------------------- */
+
+body {
+	word-wrap: break-word;	
+}
+
+/* SIDEBAR */
+
+div#find_me {
+                background: #f1f1f1;
+                border: 1px solid #CCC;
+		margin: 10px 0 10px;
+		padding: 0px 0 2px 0px;
+ 
+                -moz-border-radius: 6px;
+                -webkit-border-radius: 6px;
+
+}
+
+div#find_me h3 {
+margin: 0px 0 10px 2px;
+}
+
+div#find_me p {
+	padding:8px;
+}
+
+div #find_me a img {
+	margin-right:6px;
+	margin-bottom:8px;
+}
+
+
+
+div#search {
+margin: 15px 0 0px;
+padding: 0px ;
+}
+
+
+div#twitter_div {
+	color: #666666;
+	line-height: 1.6em;	
+        font-size: 12px;   
+        background: #c3e6ec;
+        margin: 9px 0;
+        padding: 2px 5px 0 5px;
+        border: 1px solid #CCC;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+	
+}
+
+div#twitter_div a {
+	color: #000000;
+        text-decoration: none;
+	
+}
+
+
+div#twitter_div strong {
+        font-size: 12px;  
+	font-weight: bold;
+}
+
+div#twitter_div h3 {
+margin: 0px 0 10px 2px;
+}
+
+div#twitter_div h3 a {
+            text-decoration: none;
+            color: #000;
+            hover: underline;
+}
+
+div#twitter_div ul {
+           margin: 0 0 0 4px;
+}
+
+div#twitter_div li {
+            list-style-position: inside;
+            list-style-image: url(http://twitter.com/favicon.ico);
+            padding-bottom: 10px;
+
+}
+
+
+div#disqus {
+color: #666666;
+	line-height: 1.6em;	
+        font-size: 12px;   
+        background: #ecf4fc;
+        margin: 11px 0;
+        padding: 2px 5px 0 5px;
+        border: 1px solid #CCC;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+	
+}
+
+div#explanation {
+    background: #f1f1f1;
+    padding: 15px 0 0px 15px;
+    margin: 16px 0 11px;
+    border: 1px solid #CCC;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+
+}
+h2, div#explanation  {
+    font-size: 16px;
+}
+
+div#odadeo {
+        color: #666666;
+	line-height: 1.6em;	
+        font-size: 12px;   
+        background: #ecf4fc;
+        margin: 11px 0;
+        padding: 2px 5px 0 5px;
+        border: 1px solid #CCC;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+	
+}
+
+/* Individual page tweaks */
+
+div#single_container {
+    float: left;
+    margin: 20px 0 20px 0  ;
+    padding: 10px 10px 10px 10px;    
+    width: 630px; 
+ 
+    background: #f1f1f1;
+    border: 1px solid #CCC;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+}
+
+
+div#single_container  h1{
+    font-size: 28px;
+    color: #3399ff;   
+}
+
+
+div#single_container h2 {
+margin: 0 0 5px 0;
+}
+
+h2, div#single_container {
+    font-size: 16px;
+    color: #5a5a5a;
+}
+
+div#single_container li {
+            list-style-position: inside;
+            list-style-type: disc;
+            padding-bottom: 10px;
+
+}
+
+div#contact {
+    float: right;
+    padding: 10px 10px 10px 10px;     
+    background: #ffffff;
+    border: 1px solid #CCC;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+}
+
+div#contact_text {
+   float: left;
+    padding: 0 10px 10px 10px; 
+    width: 280px;    
+    height: 325px;
+    background: #ffffff;
+    border: 1px solid #CCC;
+    -moz-border-radius: 6px;
+    -webkit-border-radius: 6px;
+}
+
+
+/* 3rd Party
+-------------------------------------------------------------------------------------*/	
+
+/* Tag cloud */
+
+div#tag_cloud {  
+        background: #f1f1f1;
+        margin: 11px 0;
+        padding: 2px 5px 0 5px;
+        border: 1px solid #CCC;
+        -moz-border-radius: 6px;
+        -webkit-border-radius: 6px;
+        font-size; .5em;
+}
+
+
+div#tag_cloud ul.tag_list li {
+        display: inline;
+        margin-right: 3px;
+        padding: 3px; text-decoration: none;	
+
+     }
+

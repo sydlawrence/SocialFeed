@@ -1,0 +1,92 @@
+/*	blue color: #27aae1*/
+
+
+body {
+	font-weight: bold;
+	letter-spacing: 0.05em;
+	font-family: "Century Gothic", Arial, sans-serif;
+}
+
+#message {
+	font-weight:bold;
+}
+
+#head #topLinks {
+	font-size:12px;
+}
+
+#head h1 {
+	font-size:49px;
+}
+
+#head h2 {
+	font-size: 18px;
+}
+
+#head h3 {
+	font-size:18px;
+}
+
+
+#topNav li a {
+	font-size:14px;
+	font-weight:bold;
+}
+
+
+ul.nav.subnav li a {
+	font-weight:bold;	
+}
+
+table td {
+	font-size:14px;
+	font-weight:bold;
+}
+
+#head #title {
+	font-size:18px;
+}
+
+#head #title #userDetails {
+	font-size:12px;
+}
+#main .wrapper {
+	font-size:12px;
+}
+
+.content h1 {
+	font-size:18px;
+	font-weight:bold;
+}
+
+.content h2 {
+	font-size:16px;
+	font-weight:bold;
+}
+
+.content h3 {
+	font-size:14px;
+	font-weight:bold;
+}
+
+.content p {
+	font-size:12px;
+	font-weight:bold;
+}
+
+.padding ul {
+	margin-bottom:20px;
+}
+
+.padding li {
+	padding-left:100px !important;
+}
+
+#extras label {
+	font-weight:bold;
+	font-size:12px;
+}
+
+#extras a {
+	font-weight:bold;
+}

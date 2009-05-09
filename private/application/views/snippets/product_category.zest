@@ -1,0 +1,9 @@
+{CRUMBS}
+<div class="hproduct-category">
+	<h1 class="title fn">{TITLE}</h1>
+	<div class="description">{DESCRIPTION}</div>
+	<div class="products">
+		{PRODUCTS}
+	</div>
+</div>
+{PAGINATION}

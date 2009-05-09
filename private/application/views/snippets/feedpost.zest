@@ -1,0 +1,20 @@
+<div class="hfeed">
+	<div class="hentry entry">
+		<h1 class="entry-title fn">{TITLE}</h1>
+		<div class="post-info">
+			<h2><abbr class="published" title="{DATE}">{DATE}</abbr></h2>
+			<h3>by <address class="vcard author">{AUTHOR}</address></h3>
+		</div>
+		<div class="entry-content">
+			<div class="image">{IMAGE}</div>
+			{TEXT}
+		</div>
+		{ADD_THIS}
+		<div class="spacer">&nbsp;</div>
+		<div class="comments">
+		<h2>Comments:</h2>
+			{COMMENTS}
+			{COMMENT_FORM}
+		</div>
+	</div>
+</div>

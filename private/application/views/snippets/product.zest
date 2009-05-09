@@ -1,0 +1,21 @@
+{CRUMBS}
+<div class="hproduct">
+	<h1 class="fn title">{TITLE}</h1>
+	<span class="price sale">
+		<span class="money">
+			<strong>Price: </strong>
+			<abbr class="currency" title="GBP" lang="en">&pound;</abbr>
+			<span class="amount">{PRICE}</span>
+		</span>
+	</span>
+	<div class="image">{IMAGE}</div>
+	<div class="description">{TEXT}</div>
+	<div class="buy">
+		{BUY_NOW}
+	</div>
+	{ADD_THIS}
+	<div class="spacer">&nbsp;</div>
+	<div class="related">
+		{RELATED_PRODUCTS}
+	</div>
+</div>

@@ -1,0 +1,108 @@
+
+input, select, textarea {
+	padding:5px;
+	font-size:14px;
+	border:2px solid #dededd;
+	margin-bottom:10px;
+	background:#fff;
+	font-family:arial, sans-serif;
+	
+}
+
+input {
+	width:200px;
+}
+
+select {
+	width:214px;
+}
+
+textarea {
+	width:300px;
+}
+
+textarea.fullWidth, .mce_Editor {
+	width:100%;
+	max-width:740px;
+	height:300px;
+	margin-bottom:10px;
+}
+
+input.fullWidth {
+	width:100%;
+	max-width:740px;
+}
+
+select.fullWidth {
+	width:100%;
+	max-width:750px;
+}
+
+select.multiple {
+	height:200px;
+}
+
+input.mini {
+	font-size:12px;
+	padding:2px;
+	width:50px;
+}
+
+select.mini {
+	font-size:12px;
+	padding:2px;
+	width:100px;
+}
+
+.submit, .button {
+	width:168px;
+	height:60px;
+	line-height:60px;
+	text-align:center;
+	color:#fff;
+	background-repeat:no-repeat;
+	font-weight:bold;
+	border:none;
+	cursor:pointer;
+	font-size:16px;
+	display:block;
+	padding:0px;
+	margin-bottom:10px;
+	
+}
+
+label {
+	font-size:16px;
+	font-weight:bold;
+}
+
+.submit:hover, .button:hover {
+	color:#ddd;
+}
+
+.submit {
+	background: #009dbe;
+	background-image:url(../images/button_submit.gif);
+}
+
+.button {	
+	background: #aeaeae;
+	background-image:url(../images/button_normal.gif);
+}
+
+select option:active {
+	background-color:#ddd;
+}
+
+select option:hover {
+	background-color:#27aae1;
+}
+
+optgroup {
+	color:#27aae1;
+}
+
+optgroup option {
+	color:#000000;
+	 padding-left:20px;
+}

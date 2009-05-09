@@ -1,0 +1,6 @@
+<form method="post">
+	<input type="hidden" id="id" name="id" value="{ID}" />
+	<input type="hidden"  id="basket" name="basket" value="edit" />
+	<input type="text" id="quantity" name="quantity" value="{QUANTITY}"/>
+	<input type="submit" value="Add to cart" class="button" />
+</form>

@@ -1,0 +1,12 @@
+<div class="cart">
+	<div class="products">
+		{ITEMS}
+	</div>
+	<span class="price sale">
+		<span class="money">
+			<strong>Total: </strong>
+			<abbr class="currency" title="GBP" lang="en">&pound;</abbr>
+			<span class="amount">{TOTAL_PRICE}</span>
+		</span>
+	</span>
+</div>

@@ -1,0 +1,56 @@
+
+#topNav {
+	padding-top:40px;
+}
+
+
+
+
+#topNav li a {
+	display:block;
+	float:left;
+	padding:0px 14px;
+	height:32px;
+	text-align:center;
+	line-height:32px;
+	overflow:hidden;
+	margin-left:3px;
+}
+
+#topNav li a.first {
+	margin-left:0px;
+}
+
+ul.subnav {
+	height:33px;
+}
+
+.nav li {
+	display:block;
+	float:left;
+}
+
+ul.nav.subnav li {
+	height:33px;	
+}
+
+ul.nav.subnav li a {
+	display:block;
+	padding:0px 20px;
+	height:33px;
+	background-repeat:no-repeat;
+	text-align:center;
+	line-height:33px;
+	cursor:pointer;	
+}
+
+.tab .tabs li, .tab .tabs li a {
+	width:auto !important;
+	padding:0px 10px !important;
+}
+
+.tab .tabs li a {
+	padding:0px 10px !important;
+}
+
+.ui-tabs-hide { display: none; }
