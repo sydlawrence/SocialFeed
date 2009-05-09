@@ -6,3 +6,4 @@
  */
 $config['_default'] = 'site';
 
+$config['test'] = 'test';
