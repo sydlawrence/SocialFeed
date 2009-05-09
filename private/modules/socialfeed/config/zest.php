@@ -5,6 +5,7 @@
  * This is the main sections that they have access to
  */
 $config['admin.main']['Media'] = 'admin/media';
+$config['admin.main']['Profiles'] = 'admin/profiles';
 $config['admin.main']['Feeds'] = 'admin/feeds';
 $config['admin.main']['Pages'] = 'admin/pages';
 
