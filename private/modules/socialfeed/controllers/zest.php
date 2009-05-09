@@ -29,6 +29,7 @@ class Zest_Controller extends Template_Controller {
 	public $content;
 
 	public function __construct() {
+		socialFeed::get_favicon_from('http://www.delicious.com/sydlawrence');
 		$this->session = Session::instance();
 		$this->db = new Database();
 		parent::__construct();
