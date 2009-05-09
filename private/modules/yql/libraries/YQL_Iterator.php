@@ -6,7 +6,7 @@
  * @package  YQL
  * @author   Sam Clark
  */
-class YQL_Result_Iterator_Core implements Iterator, ArrayAccess, Countable
+class YQL_Iterator_Core implements Iterator, ArrayAccess, Countable
 {
 	/**
 	 * Data from the YQL result
