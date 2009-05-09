@@ -55,3 +55,10 @@
 2009-05-09 20:15:08 +01:00 --- error: Uncaught PHP Error: Object of class stdClass could not be converted to string in file private/modules/socialfeed/views/zest/template.php on line 183
 2009-05-09 20:15:10 +01:00 --- error: Uncaught PHP Error: Object of class stdClass could not be converted to string in file private/modules/socialfeed/views/zest/template.php on line 183
 2009-05-09 20:15:49 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-09 20:51:19 +01:00 --- error: Uncaught PHP Error: mysql_connect() [<a href='function.mysql-connect'>function.mysql-connect</a>]: Access denied for user 'root'@'localhost' (using password: YES) in file private/system/libraries/drivers/Database/Mysql.php on line 61
+2009-05-09 20:51:56 +01:00 --- error: Uncaught Kohana_Database_Exception: There was an SQL error: Unknown column 'display_order' in 'order clause' - SELECT `zest_pages`.*
+FROM `zest_pages`
+WHERE `status_id` = 2
+AND `navbar_id` = 1
+AND `parent_id` = 0
+ORDER BY `display_order` ASC in file private/system/libraries/drivers/Database/Mysql.php on line 367

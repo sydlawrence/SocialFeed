@@ -22,7 +22,7 @@ class socialFeed_Core {
 		);
 		$curl = new Curl($curl_options);
 		try {
-			$curl->execute();
+			$curl->exec();
 			$error = FALSE;
 		}
 		catch (Exception $e) {
