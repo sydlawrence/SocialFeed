@@ -227,9 +227,40 @@ class YQL_Result implements Iterator, ArrayAccess, Countable
 		return $result
 	}
 
+	/**
+	 * Detects an RSS feed result, which has a standard structure.
+	 * This is a little hacky, but works
+	 *
+	 * @param   mixed        result 
+	 * @return  boolean
+	 * @author  Sam Clark
+	 * @access  protected
+	 * @throws  Kohana_User_Exception
+	 */
 	protected function detect_rss($result)
 	{
-		
+		// If we're dealing with XML
+		if ($result instanceof SimpleXMLElement)
+		{
+			// Try accessing the items
+			try
+			{
+				// If no exception was thrown, this is most likely an RSS feed
+				$test_for_item = $result->item;
+				return TRUE;
+			}
+			catch (Exception $e)
+			{
+				// If an exception was thrown, this is not CSS
+				return FALSE;
+			}
+		}
+		// We're dealing with JSON
+		elseif (is_array($result))
+			return array_key_exists('item', $result);
+
+		// If none of the above, throw wobbly
+		throw new Kohana_User_Exception('YQL_Result::detect_rss()', 'The result set passed was not recognised');
 	}
 
 	/**
