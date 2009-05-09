@@ -89,7 +89,7 @@ class Curl_Core {
 			throw new Kohana_User_Exception('Curl::pull()', 'The URL : '.$uri.' is not a valid resource');
 
 		// Initiate a curl session based on the URL supplied
-		$curl = Curl::factory(array(CURLOPT_POST => FALSE), $url);
+		$curl = Curl::factory(array(CURLOPT_POST => FALSE), $uri);
 
 		// If a username/password is supplied
 		if ($username AND $password)
