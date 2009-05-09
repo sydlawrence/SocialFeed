@@ -106,6 +106,8 @@ $config['modules'] = array
 	MODPATH.'url_shortner',     // url shortener integration
 	MODPATH.'googchart', // Google charts integration
 	MODPATH.'socialfeed', // Google charts integration
+	MODPATH.'curl', // Google charts integration
+	MODPATH.'yql', // Google charts integration
 
 	// MODPATH.'archive',   // Archive utility
 	// MODPATH.'payment',   // Online payments
