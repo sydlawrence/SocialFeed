@@ -48,3 +48,10 @@
 2009-05-09 12:27:57 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, Page cannot be found, could not be found. in file private/modules/socialfeed/controllers/zest.php on line 120
 2009-05-09 12:28:51 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
 2009-05-09 12:28:58 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-09 20:11:53 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, Page cannot be found, could not be found. in file private/modules/socialfeed/controllers/zest.php on line 121
+2009-05-09 20:11:58 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-09 20:11:59 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, admin/profiles, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-09 20:14:41 +01:00 --- error: Uncaught PHP Error: Object of class stdClass could not be converted to string in file private/modules/socialfeed/views/zest/template.php on line 183
+2009-05-09 20:15:08 +01:00 --- error: Uncaught PHP Error: Object of class stdClass could not be converted to string in file private/modules/socialfeed/views/zest/template.php on line 183
+2009-05-09 20:15:10 +01:00 --- error: Uncaught PHP Error: Object of class stdClass could not be converted to string in file private/modules/socialfeed/views/zest/template.php on line 183
+2009-05-09 20:15:49 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
