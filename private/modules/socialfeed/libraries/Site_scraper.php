@@ -50,6 +50,19 @@ class Site_scraper_Core{
 	 */
 	public function execute() {
 		$this->process_url($this->start_url);
+		
+//		$url = "http://socialgraph.apis.google.com/otherme?q=".$this->start_url."&edo=true&edi=tru&fme=true";
+//		print_r($url);
+//		$data = Curl::pull($url);
+//		print_r($data);
+		
+//		$data = json_decode($data);
+//		print_r($data);
+//		exit;
+		
+	//	foreach ($data )		
+		
+		
 		return array("profiles" => $this->sites,"feeds" => $this->feeds);
 	}
 	
@@ -79,16 +92,13 @@ class Site_scraper_Core{
 	 * @return array of discovered profiles
 	 */
 	public function get_rel_me($url) {
-		$query = "select href from html where url='".$url."' and xpath='//a' and rel='me'";
+		$query = "select href from html where url='".$url."' and xpath='//a[contains(concat(\" \",@rel,\" \"), \" me \")]'";
 		$q = urlencode($query);
 		$url = 'http://query.yahooapis.com/v1/public/yql?q='.$q.'&format=json';
-		$curl_options = array(
-			CURLOPT_RETURNTRANSFER  => TRUE,
-			CURLOPT_URL             => $url,
-		);
-		$curl = new Curl($curl_options);
-		$data = $curl->execute();
+		
+		$data = Curl::pull($url);
 		$data = json_decode($data);
+		
 		$array = array();
 	 	if (isset($data->query) && isset($data->query->results)) {
 			foreach ($data->query->results->a as $a) {
@@ -109,13 +119,8 @@ class Site_scraper_Core{
 	public function check_for_feed($url) {
 		$query = "select title,href from html where url='".$url."' and xpath='//link' and type='application/rss+xml'";
 		$q = urlencode($query);
-		$url = 'http://query.yahooapis.com/v1/public/yql?q='.$q.'&format=json';
-		$curl_options = array(
-			CURLOPT_RETURNTRANSFER  => TRUE,
-			CURLOPT_URL             => $url,
-		);
-		$curl = new Curl($curl_options);
-		$data = $curl->execute();
+		$url2 = 'http://query.yahooapis.com/v1/public/yql?q='.$q.'&format=json';
+		$data = Curl::pull($url2);
 		$data = json_decode($data);
 		if (!isset($data->error) && isset($data->query->results)) {
 			if(is_array($data->query->results->link)) {

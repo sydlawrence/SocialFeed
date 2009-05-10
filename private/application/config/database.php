@@ -31,11 +31,11 @@ $config['default'] = array
 	(
 		'type'     => 'mysql',
 		'user'     => 'root',
-		'pass'     => 'd3freyss1net',
+		'pass'     => 'root',
 		'host'     => 'localhost',
 		'port'     => FALSE,
 		'socket'   => FALSE,
-		'database' => 'zest'
+		'database' => 'socialfeed'
 	),
 	'character_set' => 'utf8',
 	'table_prefix'  => 'zest_',

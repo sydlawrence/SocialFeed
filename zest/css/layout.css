@@ -111,6 +111,12 @@ table td.subPage {
 	min-height:410px;	
 }
 
+.feeds.content {
+	margin-left: 45px;
+	padding:17px;
+	min-height:410px;	
+}
+
 #footer {
 	margin-top:20px;
 	padding-bottom:20px;
@@ -365,4 +371,29 @@ table td.subPage {
 			
 .current-nesting {
 	background-color: yellow;
+}
+fieldset {
+	margin-bottom: 20px;
+	display: block;
+	border-color: #d0d0cf;
+	border-style: solid;
+	border-width: 3px;
+}
+fieldset img {
+	padding-right: 5px;
+}
+ul.feeds.tabs {
+	float: left;
+	list-style-type: none;
+}
+ul.feeds.tabs li {
+	padding: 5px;
+}
+.profile {
+	float: left;
+}
+fieldset ul {
+	list-style-type: none;
+	background-color: #63a91a;
+	padding: 20px;
 }

@@ -69,7 +69,6 @@ function edit_image() {
 		return false;
 	}
 	url = BASE_URL+'admin/media/get_name/'+selected_image;
-	console.log(url);
 	
 	$("#edit_image").html('Please Wait');
 	$.get(url, function(data){
@@ -114,11 +113,12 @@ function preview_image() {
 }
 
 $(document).ready(function(){
-/*		 $(".valid_form").validate({
-		 	 onfocusout: true,
-			 success: "valid"
-		 });
-*/		 
+		$(".profile").draggable({ cursorAt: { left: 5 } });
+
+		
+	
+		
+				 
 		 $(".media_category_complete").autocomplete(BASE_URL+"admin/media/get_categories", {});
 
 
@@ -214,3 +214,50 @@ $(document).ready(function(){
 		$("#confirm").html(string);
 		hideMessages();
 	}
+
+
+function scan_site() {
+	url2 = $('#profile_url').val();
+	url = "/admin/profiles/scan";
+	
+	$('#profile_form').html("<h1>Please wait. This could take fucking ages</h1><p>But i can assure you, I am trying to be helpful. Please watch this while I work away</p><object width='425' height='344'><param name='movie' value='http://www.youtube.com/v/8NeR2LyILWQ&hl=en&fs=1&autoplay=1'></param><param name='allowFullScreen' value='true'></param><param name='allowscriptaccess' value='always'></param><embed src='http://www.youtube.com/v/8NeR2LyILWQ&hl=en&fs=1&autoplay=1' type='application/x-shockwave-flash' allowscriptaccess='always' allowfullscreen='true' width='425' height='344'></embed></object>");
+	
+	$.post(url, { url: url2 },
+	  function(data){
+	    $('#profile_form h1').html("w00p, I have finished crawling through the pipes of the interwebs");
+	    $('#profile_form p').html("I have found something you might find interesting, please scroll down.");
+	    profiles = data.profiles;
+	    feeds = data.feeds;
+	    console.log(data);
+		html = "<h2>I come bearing gifts</h2>";
+		html += "<h3>I have found the following profiles:</h3>";
+		html += "<ul>";
+		
+		for(i=0;i < profiles.length;i++) {
+			html += "<a href='"+profiles[i].url+"' target='_BLANK'><img src='"+profiles[i].favicon+"' /></a>";
+		}
+		
+		html += "</ul>";
+		
+		html += "<h3>I have found the following feeds:</h3>";
+		html += "<ul>";
+		
+		for(i=0;i < feeds.length;i++) {
+			html += "<li id='feed_"+feeds[i].id+"'><span style='float:right'><a onclick='$(\"#feed_"+feeds[i].id+"\").hide();return false;' class='ajax' href='/admin/feeds/activate/"+feeds[i].id+"'>activate</a></span><img src='"+feeds[i].favicon+"' /><a href='"+feeds[i].url+"' target='_BLANK'>"+feeds[i].title+"</a></li>";
+		}
+		
+		html += "</ul>";	    
+	    
+	    $('#profile_form').append(html);
+	    
+	    $('a.ajax').each(function() {
+	    	$(this).click(function() {
+	    		url = $(this).attr('href');
+	    		$.get(url);
+	    		return false;
+	    	})
+	    });
+	  }, "json");
+	return false;
+	
+}

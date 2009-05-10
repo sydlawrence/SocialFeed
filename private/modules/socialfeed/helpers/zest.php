@@ -186,12 +186,7 @@ class zest_Core {
 	
 	public static function get_xml_entries($url) {
 
-		$options = array(
-			CURLOPT_RETURNTRANSFER  => TRUE,
-			CURLOPT_URL             => $url
-		);
-		$curl = new Curl($options);
-	 	$data = simplexml_load_string($curl->execute());
+	 	$data = simplexml_load_string(Curl::pull($url));
 	 	
 	 	$arr = array();
 	 	foreach ($data->channel->item as $item) {

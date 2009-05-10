@@ -23,43 +23,10 @@ class Settings_Controller extends Zest_admin_Controller {
 		
 		$view = new View('zest/content');
 		
-		$view->content  = $this->__logo();
 		$view->content .= $this->__company_name();
-		$view->content .= $this->__post_message();
-		$view->content .= $this->__paypal();
-		$view->content .= $this->__under_development();
 		$this->__set_content($view);
 	}
 	
-	private function __post_message() {
-				
-		$html = form::open();
-		$html .= "<h2>Post a Message</h2>";
-		$html .= form::label('MESSAGE_TITLE','Title');
-		$html .= form::input('MESSAGE_TITLE','','class="fullWidth"');
-		$html .= form::label('MESSAGE_BODY','Body');
-		$html .= form::textarea(array('name' => 'MESSAGE_BODY', 'class' => 'fullWidth'));
-		$html .= form::submit('submit', 'Save', 'class="submit"').'<p>&nbsp;</p><p>&nbsp;</p>';
-		$html .= form::close();
-		
-		return $html;
-	
-	}
-	
-	private function __logo() {
-		$html = form::open(NULL, array('enctype' => 'multipart/form-data'));
-		$html .= form::label('file','Change the logo');
-		$html .= "<br />";
-		$html .= html::image('zest/images/logo.jpg');	
-		$html .= "<br />";
-	
-		
-		$html .= form::upload('file');
-		$html .= form::submit('submit', 'Save', 'class="submit"').'<p>&nbsp;</p><p>&nbsp;</p>';
-		$html .= form::close();
-		
-		return $html;
-	}
 	
 	private function __company_name() {
 		$COMPANY_NAME = ORM::factory('setting','COMPANY_NAME');
@@ -71,7 +38,7 @@ class Settings_Controller extends Zest_admin_Controller {
 		}
 		
 		$html = form::open();
-		$html .= form::label('COMPANY_NAME','Change company name');
+		$html .= form::label('COMPANY_NAME','Change website title');
 		$html .= form::input('COMPANY_NAME',$COMPANY_NAME->value,'class="fullWidth"');
 		$html .= form::submit('submit', 'Save', 'class="submit"').'<p>&nbsp;</p><p>&nbsp;</p>';
 		$html .= form::close();

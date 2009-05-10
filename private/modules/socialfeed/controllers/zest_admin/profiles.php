@@ -27,21 +27,78 @@ class Profiles_Controller extends Zest_admin_Controller {
 		$this->__set_content($view);
 	}
 	
-	public function _list() {
-		$items = ORM::factory('profile')->orderby(array('fl_active'=>'DESC','title'=>'ASC'))->find_all();
+	public function scan() {
+		$url = $_REQUEST['url'];
+		$scraper = new Site_scraper($url);
+		$results = $scraper->execute();
 		
-		$html = "<ul>";
+		$profiles = $results['profiles'];
+		$feeds = $results['feeds'];
 		
-		foreach ($items as $item) {
-			$html .= "<li><span style='float:right'>".$item->fl_active."</span>".$item->get_favicon()." ".$item->title."</li>";
+		$p = array();
+		foreach ($profiles as $profile) {
+			$item = ORM::factory('profile');
+			$item->favicon = socialFeed::get_favicon_from($profile);
+			$item->url = $profile;
+			$item->save();
+			$p[] = $item->as_array();
 		}
-		$html .= "</ul>";
+		
+		$f = array();
+		foreach ($feeds as $title => $feed) {
+			$item = ORM::factory('external_feed');
+			$item->favicon = socialFeed::get_favicon_from($feed['profile']);
+			$item->title = $title;
+			$item->url = $feed['feed'];
+			$item->save();
+			$f[] = $item->as_array();
+		}
+		
+		$array = array("profiles"=>$p,"feeds"=>$f);				
+		echo json_encode($array);
+		exit;
+	
+	}
+	
+	public function activate($id) {
+		$item = ORM::factory('profile',$id);
+		$item->fl_active = 1;
+		$item->save();
+	}
+	
+	public function _list() {
+		$html = "";
+		$items = ORM::factory('profile')->find_all();
+		
+		$active = "";
+		$inactive = "";
+		foreach ($items as $item) {
+			$i = "<li class='profile' title='".$item->url."'><img src='".$item->get_favicon()."' /></li>";
+			if ($item->fl_active)
+				$active .= $i;
+			else
+				$inactive .= $i;
+		}
+		
+		
+			
+		$html .= "<fieldset><legend>Display</legend>";		
+		$html .= "<ul id='active' class='connectedSortable'>".$active."<ul>";
+		$html .= "</fieldset>";
+		
+		$html .= "<fieldset><legend>Don't Display</legend>";		
+		$html .= "<ul id='inactive' class='connectedSortable'>".$inactive."<ul>";
+		$html .= "</fieldset>";
+		
+		$html .= "<fieldset><legend>Delete</legend>
+		<ul class='connectedSortable' id='delete'></ul>
+		</fieldset>";
+		
 		return $html;
 	}
 	
 	public function _form() {
-		$html = "";
-		
+		$html = new View('zest/profile_form');;
 		
 		return $html;
 	}
