@@ -10,6 +10,17 @@ class External_feed_Model extends Zest_External_feed_Model {
 //	protected $has_and_belongs_to = array('user','feed');
 
 	public $default_status = 2;
+	
+/*	public function update() {
+		if strstr($this->url,'youtube')
+			return $this->youtube_update();	
+		else
+			return parent::update();
+	}
+*/
+	public function youtube_update() {
+	
+	}
 
 	public function get_box_object() {
 		return str_replace('.','_',$this->title);

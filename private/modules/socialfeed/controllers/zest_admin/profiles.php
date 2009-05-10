@@ -40,6 +40,7 @@ class Profiles_Controller extends Zest_admin_Controller {
 			$item = ORM::factory('profile');
 			$item->favicon = socialFeed::get_favicon_from($profile);
 			$item->url = $profile;
+			$item->fl_active = 1;
 			$item->save();
 			$p[] = $item->as_array();
 		}

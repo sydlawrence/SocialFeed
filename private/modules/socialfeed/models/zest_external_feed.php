@@ -10,11 +10,12 @@ class Zest_External_feed_Model extends ORM {
 //	protected $has_and_belongs_to = array('user','feed');
 
 	public $default_status = 2;
-
+	
 	public function update() {
 		
 		// grab xml
 		$items = zest::get_xml_entries($this->url);
+		
 		$this->last_updated = date('Y-m-d H:i:s');
 		$this->save();
 		$count = 0;

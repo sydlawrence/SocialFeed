@@ -174,12 +174,15 @@ class zest_Core {
 	
 	public static function save_to_file($filename, $content) {
 		
-		$filename = APPPATH.'views/'.$filename;
+	//	$filename = APPPATH.'views/'.$filename;
 		if (file_exists($filename)) {
 			$fh = fopen($filename, 'w') or die("can't open file");			
 			fwrite($fh, $content);
 			fclose($fh);
 			return true;
+		}
+		else {
+			echo $filename." doesnt exist";
 		}
 		return false;
 	}

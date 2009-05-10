@@ -18,12 +18,13 @@ class Zest_Admin_Controller extends Template_Controller {
 	public $UNDER_DEVELOPMENT;
 	
 	public $zest;
-	
+	public $theme;
 	public $requires_authentication = true;
 	
 	public $config;
 	
 	public function __construct() {
+		$this->theme = Theme::instance();
 		$this->zest = new Zest_admin();
 		parent::__construct();
 		$this->config = Kohana::config_load('zest');
@@ -141,8 +142,8 @@ class Zest_Admin_Controller extends Template_Controller {
 			(
 				'Dashboard'     	=> 'admin',
 				'Profile'      		=> 'admin/profile',
-				'Templates'			=> 'admin/templates',
-				'Snippets'			=> 'admin/snippets',
+			#	'Templates'			=> 'admin/templates',
+				'Themes'			=> 'admin/snippets',
 				'Superuser'			=> 'admin/settings'
 			);
 			

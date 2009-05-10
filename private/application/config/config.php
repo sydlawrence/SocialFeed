@@ -102,6 +102,7 @@ $config['modules'] = array
 	// MODPATH.'media',     // Media caching and compression
 	MODPATH.'gmaps',     // Google Maps integration]
 	MODPATH.'twitter',     // Google Maps integration]	
+	MODPATH.'simplepie',     // Google Maps integration]	
 	MODPATH.'texteditor',     // Google Maps integration
 	MODPATH.'url_shortner',     // url shortener integration
 	MODPATH.'googchart', // Google charts integration

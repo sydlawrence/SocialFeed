@@ -68,3 +68,40 @@
 2009-05-10 07:29:12 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, Page cannot be found, could not be found. in file private/modules/socialfeed/controllers/zest.php on line 121
 2009-05-10 07:29:20 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, Page cannot be found, could not be found. in file private/modules/socialfeed/controllers/zest.php on line 121
 2009-05-10 07:30:06 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 07:31:14 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 07:32:37 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 07:32:47 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 07:36:22 +01:00 --- error: Uncaught PHP Error: opendir(/themes/default/) [<a href='function.opendir'>function.opendir</a>]: failed to open dir: No such file or directory in file private/modules/socialfeed/helpers/zest.php on line 104
+2009-05-10 07:37:04 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 07:38:12 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 07:38:30 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 07:39:16 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 07:42:02 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 07:42:50 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 07:42:59 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 07:44:06 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 07:44:14 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 07:45:07 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 07:45:16 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 07:49:32 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 07:50:22 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 07:51:52 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 07:52:56 +01:00 --- error: Uncaught PHP Error: fopen(/themes/default/box test.html) [<a href='function.fopen'>function.fopen</a>]: failed to open stream: No such file or directory in file private/modules/socialfeed/controllers/zest_admin/snippets.php on line 22
+2009-05-10 07:54:02 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 07:54:50 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 07:57:12 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 07:57:55 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 07:58:29 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 07:58:34 +01:00 --- error: Uncaught PHP Error: Invalid argument supplied for foreach() in file private/modules/socialfeed/helpers/zest.php on line 195
+2009-05-10 08:52:40 +01:00 --- error: Uncaught PHP Error: ./cache/383b7b17777fbe3949b0df51bffc7fac.spc is not writeable in file private/modules/simplepie/libraries/simplepie.php on line 1780
+2009-05-10 09:21:49 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 09:24:37 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 09:25:44 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 09:26:08 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 09:28:41 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 09:29:02 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/images/column-navigation.jpg, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 09:29:02 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/images/amazon-blu-ray.jpg, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 09:29:02 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/images/play-blu-ray.jpg, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 09:29:03 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/images/hmv-blu-ray.jpg, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 09:30:36 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
+2009-05-10 09:32:56 +01:00 --- error: Uncaught Kohana_404_Exception: The page you requested, assets/zest/img/loadingAnimation.gif, could not be found. in file private/system/core/Kohana.php on line 787
