@@ -27,9 +27,7 @@ class Feeds_Controller extends Zest_admin_Controller {
 			$feed->title = $_POST['title'];
 			$feed->save();
 			$this->__throw_success("New feed ".$feed->title." has been created");
-			
 		}	
-		
 		$feeds = ORM::factory('feed')->find_all();
 		
 		$tabs = array();
@@ -116,19 +114,46 @@ class Feeds_Controller extends Zest_admin_Controller {
 		$view = new View('zest/tabs');
 		$tabs = array();
 		$feeds = ORM::factory('external_feed')->find_all();
-		foreach ($feeds as $feed) {
-			$title = "";
-			if ($feed->favicon != "") {
-				$title .= "<img src='".$feed->favicon."' alt='".$feed->title."' />";
-			}
-			if (count($feeds) < 6)
-				$title .= text::limit_chars($feed->title, 10, "...", false);
-			$tabs[$title] = $this->__external_feed_render($feed);
-		}
-		
+		$tabs['Active'] = $this->_active_feeds();
+		$tabs['Inactive'] = $this->_inactive_feeds();
 		$tabs["Add New"] = $this->__external_feed_form();
 		$view->tabs = $tabs;
 		return $view_top.$view;
+	}
+	
+	public function _active_feeds() {
+		
+		
+		$feeds = ORM::factory('external_feed')->find_all();
+		
+		$tabs = array();
+		
+		foreach ($feeds as $feed) {
+			if ($feed->fl_active == 1)
+				$tabs[$feed->favicon] = $this->__external_feed_render($feed);
+			else $this->inactive[] = $feed;
+		}
+		
+		
+		$view = new View('zest/feed_tabs');
+		
+		$view->tabs = $tabs;
+		
+		
+		return $view;
+	}
+	
+	private $inactive = array();
+	
+	public function _inactive_feeds() {
+		$html = "";
+		$html .= "<ul style='list-style:none'>";
+		foreach ($this->inactive as $feed) {
+			$html .= "<li  class='feed' style='padding-left:45px !important;background-image:url(".$feed->favicon.") !important;background-repeat:no-repeat'><span class='right'><a href='/admin/feeds/activate/".$feed->id."'>activate</a>'&nbsp;".html::anchor('admin/delete/external_feed/'.$feed->id,html::image('zest/images/delete.png'),array('class'=> 'ajax-button','rel'=>'delete'))."</span><span><a href='".$feed->url."' target='_BLANK'>". text::limit_chars($feed->title, 100, "...", true)."</a></span></li>";
+		}
+		$html .= "</ul>";
+		
+		return $html;
 	}
 	
 	public function delete_external_feedpost($id) {
@@ -150,11 +175,14 @@ class Feeds_Controller extends Zest_admin_Controller {
 	public function delete_external_feed($id) {
 		$item = ORM::factory('external_feed',$id);
 		$item->delete();
+		if (!request::is_ajax())
+			url::redirect('admin/feeds');
 	}
 	
 	public function __external_feed_render($feed) {
-		$html = "<p>Last updated: ".zest::relative_time($feed->last_updated)."</p>";
-		
+		$html = "<h2>".$feed->title."</h2>";
+		$html .= "<p>Last updated: ".zest::relative_time($feed->last_updated)."</p>";
+		$html .= "<p><a href='/admin/feeds/delete_external_feed/".$feed->id."'>Delete Feed</a></p>";
 		$html .= "<ul style='list-style:none'>";
 		foreach ($feed->where('status_id',2)->orderby('pubDate','DESC')->external_feedposts as $post) {
 			$html .= "<li  class='feedpost' style='padding-left:45px !important;background-image:url(".$feed->favicon.") !important;'><span class='right'>&nbsp;".html::anchor('admin/delete/external_feedpost/'.$post->id,html::image('zest/images/delete.png'),array('class'=> 'ajax-button','rel'=>'delete'))."</span><span><a href='".$post->permalink."' target='_BLANK'>". text::limit_chars($post->title, 100, "...", true)."</a></span></li>";

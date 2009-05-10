@@ -113,11 +113,12 @@ function preview_image() {
 }
 
 $(document).ready(function(){
-/*		 $(".valid_form").validate({
-		 	 onfocusout: true,
-			 success: "valid"
-		 });
-*/		 
+		$(".profile").draggable({ cursorAt: { left: 5 } });
+
+		
+	
+		
+				 
 		 $(".media_category_complete").autocomplete(BASE_URL+"admin/media/get_categories", {});
 
 
@@ -219,11 +220,12 @@ function scan_site() {
 	url2 = $('#profile_url').val();
 	url = "/admin/profiles/scan";
 	
-	$('#profile_form').html("<p>Please wait. This could take fucking ages</p>");
+	$('#profile_form').html("<h1>Please wait. This could take fucking ages</h1><p>But i can assure you, I am trying to be helpful. Please watch this while I work away</p><object width='425' height='344'><param name='movie' value='http://www.youtube.com/v/8NeR2LyILWQ&hl=en&fs=1&autoplay=1'></param><param name='allowFullScreen' value='true'></param><param name='allowscriptaccess' value='always'></param><embed src='http://www.youtube.com/v/8NeR2LyILWQ&hl=en&fs=1&autoplay=1' type='application/x-shockwave-flash' allowscriptaccess='always' allowfullscreen='true' width='425' height='344'></embed></object>");
 	
 	$.post(url, { url: url2 },
 	  function(data){
-	    
+	    $('#profile_form h1').html("w00p, I have finished crawling through the pipes of the interwebs");
+	    $('#profile_form p').html("I have found something you might find interesting, please scroll down.");
 	    profiles = data.profiles;
 	    feeds = data.feeds;
 	    console.log(data);
@@ -232,7 +234,7 @@ function scan_site() {
 		html += "<ul>";
 		
 		for(i=0;i < profiles.length;i++) {
-			html += "<li id='profile_"+profiles[i].id+"'><span style='float:right'><a onclick='$('#profile_"+profiles[i].id+"').hide();return false;' class='ajax' href='/admin/profiles/activate/"+profiles[i].id+"'>activate</a></span><img src='"+profiles[i].favicon+"' />"+profiles[i].url+"</li>";
+			html += "<a href='"+profiles[i].url+"' target='_BLANK'><img src='"+profiles[i].favicon+"' /></a>";
 		}
 		
 		html += "</ul>";
@@ -241,12 +243,12 @@ function scan_site() {
 		html += "<ul>";
 		
 		for(i=0;i < feeds.length;i++) {
-			html += "<li id='feed_"+feeds[i].id+"'><span style='float:right'><a onclick='$('#feed_"+feeds[i].id+"').hide();return false;' class='ajax' href='/admin/feeds/activate/"+feeds[i].id+"'>activate</a></span><img src='"+feeds[i].favicon+"' /><a href='"+feeds[i].url+"' target='_BLANK'>"+feeds[i].title+"</a></li>";
+			html += "<li id='feed_"+feeds[i].id+"'><span style='float:right'><a onclick='$(\"#feed_"+feeds[i].id+"\").hide();return false;' class='ajax' href='/admin/feeds/activate/"+feeds[i].id+"'>activate</a></span><img src='"+feeds[i].favicon+"' /><a href='"+feeds[i].url+"' target='_BLANK'>"+feeds[i].title+"</a></li>";
 		}
 		
 		html += "</ul>";	    
 	    
-	    $('#profile_form').html(html);
+	    $('#profile_form').append(html);
 	    
 	    $('a.ajax').each(function() {
 	    	$(this).click(function() {

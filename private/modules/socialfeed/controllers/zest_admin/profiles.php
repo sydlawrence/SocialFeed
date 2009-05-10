@@ -48,6 +48,7 @@ class Profiles_Controller extends Zest_admin_Controller {
 		foreach ($feeds as $title => $feed) {
 			$item = ORM::factory('external_feed');
 			$item->favicon = socialFeed::get_favicon_from($feed['profile']);
+			$item->title = $title;
 			$item->url = $feed['feed'];
 			$item->save();
 			$f[] = $item->as_array();
@@ -66,14 +67,33 @@ class Profiles_Controller extends Zest_admin_Controller {
 	}
 	
 	public function _list() {
-		$items = ORM::factory('profile')->orderby(array('fl_active'=>'DESC','title'=>'ASC'))->find_all();
+		$html = "";
+		$items = ORM::factory('profile')->find_all();
 		
-		$html = "<ul>";
-		
+		$active = "";
+		$inactive = "";
 		foreach ($items as $item) {
-			$html .= "<li><span style='float:right'>".$item->fl_active."</span><img src='".$item->get_favicon()."' /> ".$item->title."</li>";
+			$i = "<li class='profile' title='".$item->url."'><img src='".$item->get_favicon()."' /></li>";
+			if ($item->fl_active)
+				$active .= $i;
+			else
+				$inactive .= $i;
 		}
-		$html .= "</ul>";
+		
+		
+			
+		$html .= "<fieldset><legend>Display</legend>";		
+		$html .= "<ul id='active' class='connectedSortable'>".$active."<ul>";
+		$html .= "</fieldset>";
+		
+		$html .= "<fieldset><legend>Don't Display</legend>";		
+		$html .= "<ul id='inactive' class='connectedSortable'>".$inactive."<ul>";
+		$html .= "</fieldset>";
+		
+		$html .= "<fieldset><legend>Delete</legend>
+		<ul class='connectedSortable' id='delete'></ul>
+		</fieldset>";
+		
 		return $html;
 	}
 	
