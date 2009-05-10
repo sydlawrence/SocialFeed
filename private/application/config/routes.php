@@ -5,4 +5,5 @@
  * Sets the default route to "welcome"
  */
 $config['_default'] = 'site';
-$config['scraper'] = 'scraper';
+
+$config['test'] = 'test';
