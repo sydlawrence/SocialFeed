@@ -1,11 +1,7 @@
 <?php defined('SYSPATH') or die('No direct script access.');
 
 // The API URI's for accessing YQL
-$config['api'] = array
-(
-	'public'    => 'http://query.yahooapis.com/v1/yql?q=',
-	'private'   => 'http://query.yahooapis.com/v1/public/yql?q=',
-);
+$config['api'] = YQL::YQL_PUBLIC_API;
 
 // Cache lifetime in seconds, if FALSE no caching
 $config['cache'] = FALSE;

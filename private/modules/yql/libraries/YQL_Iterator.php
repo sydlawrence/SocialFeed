@@ -201,9 +201,9 @@ class YQL_Iterator_Core implements Iterator, ArrayAccess, Countable
 	 * Returns the YQL_Iterator as an array, optionally
 	 * flattening the YQL_Result objects as well
 	 *
-	 * @param string $flatten_all 
-	 * @return void
-	 * @author Sam Clark
+	 * @param   boolean      flatten_all 
+	 * @return  array
+	 * @author  Sam Clark
 	 */
 	public function as_array($flatten_all = FALSE)
 	{
