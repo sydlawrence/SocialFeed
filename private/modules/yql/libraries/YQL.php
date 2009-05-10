@@ -136,7 +136,7 @@ class YQL_Core {
 		$this->select = array('SHOW' => 'tables');
 
 		// Execute the query
-
+		return $this->exec();
 	}
 
 	/**
@@ -145,7 +145,7 @@ class YQL_Core {
 	 * as personal blogs or other unaffiliated sites.
 	 *
 	 * @param   string       table
-	 * @return  YQL_Iterator
+	 * @return  YQL_Result
 	 * @author  Sam Clark
 	 * @access  public
 	 */
@@ -162,25 +162,76 @@ class YQL_Core {
 		$this->select = array('DESC' => $table);
 
 		// Execute the query
-
+		return $this->exec();
 	}
 
+	/**
+	 * Select method used to create the SELECT statement
+	 *
+	 * @param   string       select 
+	 * @param   array        select
+	 * @return  self
+	 * @author  Sam Clark
+	 * @access  public
+	 */
 	public function select($select = '*')
 	{
-		
+		// If $select is a string, add it to the array
+		if ( ! is_array($select))
+			$this->select[] = $select;
+		// Otherwise merge the current array
+		else
+			$this->select += $select;
+
+		// Return this
 		return $this;
 	}
 
-
+	/**
+	 * From clause used to form the FROM statement
+	 *
+	 * @param   string       from 
+	 * @return  self
+	 * @author  Sam Clark
+	 * @access  public
+	 */
 	public function from($from)
 	{
-		
+		// Type cast $from to string
+		$this->from = (string) $from;
+
+		// Return this
 		return $this;
 	}
 
-	public function where($key, $value = NULL)
+	/**
+	 * undocumented function
+	 *
+	 * @param   string       key 
+	 * @param   string       value
+	 * @param   boolean      quote  whether to quote the variables or not
+	 * @return  self
+	 * @author  Sam Clark
+	 * @access  public
+	 * @throws  Kohana_User_Exception
+	 */
+	public function where($key, $value = NULL, $quote = TRUE)
 	{
-		
+		// Get the number of arguments for sanity checking
+		$num_args = func_num_args();
+
+		// If $value is NULL, $key should be an array
+		if ($num_args == 1 AND ! is_array($key))
+			throw new Kohana_User_Exception('YQL::where()', 'value argument must be set if key is not an array');
+
+		// Format the key ready for insertion
+		if ( ! is_array($key))
+			$key = array($key, $value);
+
+		foreach ($key as $k => $v)
+			$this->where[] = $this->add_where($k, $v, 'AND', $quote);
+
+
 		return $this;
 	}
 
@@ -282,6 +333,11 @@ class YQL_Core {
 		$statement .= 'FROM '.$this->from.' ';
 
 		/* WHERE */
+		
+
+		/* LIMIT / OFFSET */
+
+
 	}
 
 	/**
@@ -344,18 +400,18 @@ class YQL_Core {
 	}
 
 	/**
-	 * Detects the parse method from the response
+	 * Parses the response data and returns the appropriate YQL Result or Iterator
 	 *
 	 * @param   string         data 
 	 * @return  YQL_Iterator
-	 * @return  YQL_Iterator
+	 * @return  YQL_Result
 	 * @author  Sam Clark
 	 * @access  protected
 	 * @throws  Kohana_User_Error
 	 */
 	protected function parse($data)
 	{
-		if (preg_match('/text\/xml/', $this->curl->header('Content-Type'))
+		if (preg_match('/text\/xml/', $this->curl->header('Content-Type')))
 			throw new Kohana_User_Exception('YQL::parse()', 'XML is not currently supported!');
 
 		// Decode the result, and get the query array
@@ -365,11 +421,129 @@ class YQL_Core {
 		if (array_key_exists('error', $data))
 			throw new Kohana_User_Exception('YQL::parse()', $data['error']['description'])
 
+		// Set the diagnostics
+		$this->diagnostics = $result['diagnostics'];
+
 		// Set the result to the query response
 		$result = $result['query'];
 
+		// If the result is a single table, return 
 		if (array_key_exists('table', $result['results']))
-			return new YQL_Result($result['results']['table'])
+			return new YQL_Result($result['results']['table']);
+
+		if (array_key_exists('item', $result['results']))
+			return new YQL_Iterator($result['results']['item']);
+
+		return new YQL_Iterator($result['results']);
+	}
+
+	/**
+	 * Formats the supplied where clause
+	 *
+	 * @param   string       key 
+	 * @param   string       value 
+	 * @param   string       type 
+	 * @param   string       quote 
+	 * @return  string
+	 * @author  Sam Clark
+	 * @access  protected
+	 */
+	protected function add_where($key, $value, $type, $quote)
+	{
+		// Figure out whether the prefix is required
+		$prefix = count($this->where) ? '' : $type;
+
+		// Sanitise values
+		if ($value === NULL)
+		{
+			// If the value is NULL and there is no operator, default to IS
+			if ( ! $this->has_operator($key))
+				$key .= ' IS';
+
+			// Replace value with YQL NULL
+			$value = ' NULL';
+		}
+		elseif (is_bool($value))
+		{
+			// If the value is boolean and there is no operator, default to equals
+			if ( ! $this->has_operator($key))
+				$key .= ' =';
+
+			// Convert boolean values to YQL types
+			$value = $value ? '1' : '0';
+		}
+		else
+		{
+			// If the key has no operator, default to equals
+			if ( ! $this->has_operator($key))
+				$key .= ' =';
+
+			switch ($quote)
+			{
+				case TRUE :
+					$value = $this->escape($value);
+					break;
+				case -1 :
+					$value = $this->parentheses($value);
+					break;
+			}
+		}
+
+		// Add this where statement to the where array
+		return $prefix.$key.$value;
+	}
+
+	/**
+	 * Escapes a value with correct formatting
+	 *
+	 * @param   string       value 
+	 * @return  string
+	 * @author  Sam Clark
+	 */
+	protected function escape($value)
+	{
+		$type = gettype($value);
+
+		switch ($type)
+		{
+			case 'string' :
+				$value = '\''.$value.'\'';
+				break;
+			case 'boolean' :
+				$value = (int) $value;
+				break;
+			case 'double' :
+				$value = sprintf('%F', $value);
+				break;
+			default :
+				$value = ($value === NULL) ? 'NULL' : $value;
+		}
+		return $value;
+	}
+
+	/**
+	 * Places the supplied value in parentheses
+	 *
+	 * @param   string       value 
+	 * @return  string
+	 * @author  Sam Clark
+	 */
+	protected function parentheses($value)
+	{
+		return '('.$value.')';
+	}
+
+	/**
+	 * Determines if the string has an arithmetic operator in it.
+	 *
+	 * @param   string       str  string to check
+	 * @return  boolean
+	 * @author  Woody Gilk
+	 * @access  protected
+	 */
+	protected function has_operator($str)
+	{
+		return (bool) preg_match('/[<>!=]|\sIS(?:\s+NOT\s+)?\b/i', trim($str));
 	}
 
 } // End YQL_Core
